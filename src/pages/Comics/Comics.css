@@ -1,0 +1,42 @@
+.comics-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  /* padding: 2rem; */
+}
+
+.comics-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  /* color: var(--primary-color); */
+}
+
+.filters-and-pagination {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-left: 30px;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+
+.sticky-filters-pagination {
+  position: sticky;
+  top: 103px; /* 🔥 même hauteur que le header à peu près*/
+  z-index: 2;
+  backdrop-filter: blur(20px); /* bonus flou si tu veux */
+  isolation: isolate;
+  box-shadow: 0 4px 19px rgba(0, 0, 0, 0.8);
+}
+
+.sticky-filters-pagination::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background-color: rgba(255, 255, 255, 0.7); */
+  z-index: -1;
+}

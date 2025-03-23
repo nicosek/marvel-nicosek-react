@@ -1,0 +1,36 @@
+.header {
+  position: sticky; /* 👈 header collant */
+  top: 0; /* 👈 collé en haut */
+  z-index: 10; /* 👈 s’assurer qu’il passe devant le contenu */
+
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 1);
+
+  background-image: url("/background-header.webp");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+/* ✨ Voile blanc semi-transparent */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.3); /* 👈 opacité réglable */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* S’assurer que le contenu du header reste au-dessus du voile */
+.header > * {
+  position: relative;
+  z-index: 1;
+}

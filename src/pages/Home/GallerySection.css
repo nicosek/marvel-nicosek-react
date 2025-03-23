@@ -1,0 +1,58 @@
+.gallery-section {
+  /* margin-top: 3rem; */
+}
+
+.gallery-title {
+  display: block; /* ✅ s'assure qu’il prend sa ligne */
+  text-align: center; /* ✅ texte centré */
+  margin: 0 auto 2rem; /* ✅ centrage horizontal */
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+  position: relative;
+  width: fit-content; /* ✅ s’adapte au texte */
+  padding-bottom: 0.5rem;
+}
+
+/* Trait stylisé en-dessous */
+.gallery-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+}
+
+.gallery-section h2 {
+  /* text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem; */
+}
+
+.carousel-wrapper {
+  width: 100%;
+  max-width: 80vw;
+  margin: 0 auto;
+  overflow: hidden; /* 🔒 évite les débordements visuels */
+}
+
+.comics-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+
+.comics-carousel::-webkit-scrollbar {
+  display: none;
+}

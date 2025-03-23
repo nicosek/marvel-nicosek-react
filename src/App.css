@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #e62429;
+  --primary-color-transparent: rgba(230, 36, 41, 0.6);
+  --secondary-color: #02287b;
+  --font-family: "Marvel", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #fff;
+  color: var(--secondary-color);
+  line-height: 1.6;
+  /* padding: 0 2rem; */
+  margin: 0;
+  /* background: url("../public/marvel-texture.jpg") no-repeat center center fixed;
+  background-size: cover; */
+  background: url("../public/marvel-texture.jpg") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed; /* important : reste collé à la fenêtre */
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.8); /* 👈 ajustable */
+  z-index: -1;
+  pointer-events: none; /* 👈 pour ne pas bloquer les clics */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--primary-color);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  /* text-decoration: underline; */
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
