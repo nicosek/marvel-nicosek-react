@@ -1,12 +1,12 @@
-import { useFilters } from "../../contexts/FiltersContext";
+import usePageFilters from "../../hooks/usePageFilters";
 import { Link } from "react-router-dom";
 import "./ComicCard.css";
 
 const ComicCard = ({ comic }) => {
-  const { updateFilters } = useFilters();
+  const { setFilters } = usePageFilters();
 
   const handleClick = () => {
-    updateFilters({ title: "" }); // 👈 reset de la search
+    setFilters({ title: "" }); // 👈 reset de la search
   };
 
   return (

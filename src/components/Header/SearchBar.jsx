@@ -1,15 +1,33 @@
 import "./SearchBar.css";
-import { useState } from "react";
-import { useFilters } from "../../contexts/FiltersContext";
+import { useState, useEffect } from "react";
+import usePageFilters from "../../hooks/usePageFilters";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-  const { updateFilters } = useFilters();
+  const { filters, setFilters } = usePageFilters();
   const [search, setSearch] = useState("");
+  const location = useLocation();
+  const isResultsPage = ["/comics", "/characters"].includes(location.pathname);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateFilters({ title: search, page: 1 }); // reset page aussi
+
+    const newParams = { title: search, page: 1 };
+
+    if (!isResultsPage) {
+      const searchString = new URLSearchParams(newParams).toString();
+      navigate(`/comics?${searchString}`);
+    } else {
+      setFilters(newParams);
+    }
   };
+
+  useEffect(() => {
+    if (isResultsPage) {
+      setSearch(filters.title || "");
+    }
+  }, [filters.title, isResultsPage]);
 
   return (
     <form onSubmit={handleSubmit} className="search-form">

@@ -1,12 +1,12 @@
 import "./Logo.css";
 import { Link } from "react-router-dom";
-import { useFilters } from "../../contexts/FiltersContext";
+import usePageFilters from "../../hooks/usePageFilters";
 
 const Logo = () => {
-  const { updateFilters } = useFilters();
+  const { setFilters } = usePageFilters();
 
   const handleClick = () => {
-    updateFilters({ title: "" }); // 👈 reset de la search
+    setFilters({ title: "" }); // 👈 reset de la search
   };
 
   return (

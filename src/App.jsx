@@ -4,10 +4,6 @@ import "./App.css";
 // Providers
 import { AuthProvider } from "./contexts/AuthContext";
 import { ModalProvider } from "./contexts/ModalContext";
-import { FiltersProvider } from "./contexts/FiltersContext";
-
-// Listeners
-import FiltersListener from "./listeners/FiltersListener";
 
 // Composants UI
 import Header from "./components/Header/Header";
@@ -23,19 +19,16 @@ const App = () => {
   return (
     <AuthProvider>
       <ModalProvider>
-        <FiltersProvider>
-          <Router>
-            <FiltersListener />
-            <Header />
-            <SignupModal />
-            <LoginModal />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/comics" element={<Comics />} />
-              <Route path="/comic/:id" element={<Comic />} />
-            </Routes>
-          </Router>
-        </FiltersProvider>
+        <Router>
+          <Header />
+          <SignupModal />
+          <LoginModal />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/comics" element={<Comics />} />
+            <Route path="/comic/:id" element={<Comic />} />
+          </Routes>
+        </Router>
       </ModalProvider>
     </AuthProvider>
   );
