@@ -2,16 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-.pagination-placeholder {
-  width: 220px;
-  height: 1px;
-  visibility: hidden;
-}
-
+/* Pagination boutons */
 .pagination-controls {
   display: flex;
   justify-content: center;
@@ -20,13 +16,7 @@
   font-size: 2rem;
 }
 
-.pagination-limit {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-}
-
+/* Boutons */
 .pagination-controls button {
   padding: 0.5rem 0.8rem;
   background-color: var(--primary-color);
@@ -53,19 +43,13 @@
   color: var(--primary-color);
 }
 
-.sticky-pagination {
-  position: sticky;
-  top: 103px; /* 🔥 même hauteur que le header à peu près*/
-  z-index: 2;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 19px rgba(0, 0, 0, 0.8);
-  background-color: var(--secondary-color-transparent);
-}
-
+/* Dropdown */
 .pagination-limit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.3rem;
   color: var(--primary-color);
-  margin-right: 20px;
 }
 
 .limit-select {
@@ -75,7 +59,6 @@
   background-color: rgba(255, 255, 255, 0.8);
   outline: none;
   cursor: pointer;
-  /* min-width: 160px; */
 }
 
 .limit-select:hover {

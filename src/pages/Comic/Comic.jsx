@@ -13,7 +13,6 @@ const Comic = () => {
       try {
         const response = await api.get(`/api/marvel/comic/${id}`);
         setComic(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Erreur lors du fetch du comic :", error);
       } finally {

@@ -1,53 +1,63 @@
 import { useEffect, useState } from "react";
-import api from "../../api/client";
+import { useParams } from "react-router-dom";
+import { fetchComics } from "../../api/comics";
 import usePageFilters from "../../hooks/usePageFilters";
 import ItemGrid from "../../components/ItemGrid/ItemGrid";
 import ComicCard from "../../components/ComicCard/ComicCard";
-import Pagination from "../../components/Pagination/Pagination";
+import ComicsToolbar from "../../components/ComicsToolbar/ComicsToolbar";
 import "./Comics.css";
 import { DEFAULT_COMICS_LIMIT } from "../../constants/filters";
 
 const Comics = () => {
-  const { filters } = usePageFilters();
-  const {
-    page = 1,
-    limit = DEFAULT_COMICS_LIMIT,
-    characterId = "",
-    title = "",
-  } = filters;
+  const { filters, setFilters } = usePageFilters();
+  const { page, limit, title } = filters;
+  const { characterId = "" } = useParams();
 
   const [comics, setComics] = useState([]);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const fetchComics = async () => {
-      try {
-        const skip = (page - 1) * limit;
-        const queryParams = new URLSearchParams();
-        queryParams.append("limit", limit);
-        queryParams.append("skip", skip);
-        if (characterId) queryParams.append("characterId", characterId);
-        if (title) queryParams.append("title", title);
+    const isPageMissing = page === undefined;
+    const isLimitMissing = limit === undefined;
 
-        const response = await api.get(
-          `/api/marvel/comics?${queryParams.toString()}`
-        );
-        window.scrollTo({ top: 0 });
-        setComics(response.data.results);
-        setCount(response.data.count);
-      } catch (error) {
-        console.error("Error fetching comics:", error);
-      }
-    };
+    if (isPageMissing || isLimitMissing) {
+      setFilters({
+        page: page || 1,
+        limit: limit || DEFAULT_COMICS_LIMIT,
+      });
+    }
+  });
 
-    fetchComics();
-  }, [page, limit, characterId, title]);
+  const loadComicsData = async (params) => {
+    try {
+      const { comics, count } = await fetchComics(params);
+      window.scrollTo({ top: 0 });
+      setComics(comics);
+      setCount(count);
+    } catch (e) {
+      console.error("Error loading comics (filters):", e);
+    }
+  };
+
+  // 🔁 Changement de filtre (hors character)
+  useEffect(() => {
+    if (!characterId) {
+      loadComicsData({ page, limit, title });
+    }
+  }, [page, limit, title]);
+
+  // 🔁 Changement de character
+  useEffect(() => {
+    if (characterId) {
+      loadComicsData({ characterId });
+    }
+  }, [characterId]);
 
   return (
     <main className="comics-page">
       <div className="sticky-pagination">
         <h2 className="comics-title">All Marvel Comics</h2>
-        <Pagination totalCount={count} />
+        <ComicsToolbar totalCount={count} />
       </div>
 
       <ItemGrid items={comics} RenderItem={ComicCard} propName="comic" />

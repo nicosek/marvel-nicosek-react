@@ -23,8 +23,6 @@ const Pagination = ({ totalCount }) => {
 
   return (
     <div className="pagination-container">
-      <div className="pagination-placeholder" />
-
       <div className="pagination-controls">
         {page > 1 && (
           <>

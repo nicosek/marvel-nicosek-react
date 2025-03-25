@@ -1,26 +1,28 @@
 import "./SearchBar.css";
 import { useState, useEffect } from "react";
 import usePageFilters from "../../hooks/usePageFilters";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const SearchBar = () => {
-  const { filters, setFilters } = usePageFilters();
+  const { filters } = usePageFilters();
   const [search, setSearch] = useState("");
-  const location = useLocation();
-  const isResultsPage = ["/comics", "/characters"].includes(location.pathname);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isResultsPage =
+    location.pathname.startsWith("/comics") ||
+    location.pathname.startsWith("/characters");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newParams = { title: search, page: 1 };
+    const searchString = new URLSearchParams(newParams).toString();
+    const destination_pathname = location.pathname.startsWith("/characters")
+      ? "/characters"
+      : "comics";
 
-    if (!isResultsPage) {
-      const searchString = new URLSearchParams(newParams).toString();
-      navigate(`/comics?${searchString}`);
-    } else {
-      setFilters(newParams);
-    }
+    navigate(`${destination_pathname}?${searchString}`);
   };
 
   useEffect(() => {

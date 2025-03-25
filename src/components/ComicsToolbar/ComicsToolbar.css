@@ -1,0 +1,35 @@
+.comics-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.toolbar-zone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.toolbar-zone.left {
+  min-width: 150px;
+  flex: 1;
+}
+
+.toolbar-zone.center {
+  /* flex-grow: 1; */
+  justify-content: center;
+  flex: 2;
+}
+
+.sticky-pagination {
+  position: sticky;
+  top: 103px;
+  z-index: 2;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 19px rgba(0, 0, 0, 0.8);
+  background-color: var(--secondary-color-transparent);
+}

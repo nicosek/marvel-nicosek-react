@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { useLocation, useParams } from "react-router-dom";
 import "./App.css";
 
 // Providers
@@ -6,7 +7,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { ModalProvider } from "./contexts/ModalContext";
 
 // Composants UI
-import Header from "./components/Header/Header";
+import Layout from "./components/Layout/Layout";
 import SignupModal from "./components/SignupModal/SignupModal";
 import LoginModal from "./components/LoginModal/LoginModal";
 
@@ -20,13 +21,15 @@ const App = () => {
     <AuthProvider>
       <ModalProvider>
         <Router>
-          <Header />
           <SignupModal />
           <LoginModal />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/comics" element={<Comics />} />
-            <Route path="/comic/:id" element={<Comic />} />
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/comics" element={<Comics />} />
+              <Route path="/comics/:characterId" element={<Comics />} />
+              <Route path="/comic/:id" element={<Comic />} />
+            </Route>
           </Routes>
         </Router>
       </ModalProvider>
