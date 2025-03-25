@@ -22,7 +22,7 @@
 .toolbar-zone.center {
   /* flex-grow: 1; */
   justify-content: center;
-  flex: 2;
+  flex: 2.6;
 }
 
 .sticky-pagination {

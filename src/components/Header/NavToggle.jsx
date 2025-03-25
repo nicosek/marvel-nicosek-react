@@ -10,16 +10,16 @@ const NavToggle = () => {
   return (
     <div className="nav-toggle">
       <button
-        className={currentPath === "/characters" ? "active" : ""}
-        onClick={() => navigate("/characters")}
-      >
-        Characters
-      </button>
-      <button
         className={currentPath === "/comics" ? "active" : ""}
         onClick={() => navigate("/comics")}
       >
         Comics
+      </button>
+      <button
+        className={currentPath === "/characters" ? "active" : ""}
+        onClick={() => navigate("/characters")}
+      >
+        Characters
       </button>
     </div>
   );

@@ -7,7 +7,8 @@ import "./Pagination.css";
 
 const Pagination = ({ totalCount }) => {
   const { filters, setFilters } = usePageFilters();
-  const { page = 1, limit = DEFAULT_COMICS_LIMIT } = filters;
+  const page = Number(filters.page) || 1;
+  const limit = Number(filters.limit) || DEFAULT_COMICS_LIMIT;
 
   const lastPage = Math.ceil(totalCount / limit);
   const hasNextPage = page < lastPage;
@@ -24,25 +25,36 @@ const Pagination = ({ totalCount }) => {
   return (
     <div className="pagination-container">
       <div className="pagination-controls">
-        {page > 1 && (
-          <>
-            <button onClick={() => setPage(1)}>«</button>
-            <button onClick={() => setPage(page - 10)}>‹‹</button>
-            <button onClick={() => setPage(page - 1)}>‹</button>
-          </>
-        )}
+        <>
+          <button disabled={page <= 1} onClick={() => setPage(1)}>
+            «
+          </button>
+          <button disabled={page <= 10} onClick={() => setPage(page - 10)}>
+            ‹‹
+          </button>
+          <button disabled={page <= 1} onClick={() => setPage(page - 1)}>
+            ‹
+          </button>
+        </>
 
         <span className="current-page">
           Page {page} / {lastPage}
         </span>
 
-        {hasNextPage && (
-          <>
-            <button onClick={() => setPage(page + 1)}>›</button>
-            <button onClick={() => setPage(page + 10)}>››</button>
-            <button onClick={() => setPage(lastPage)}>»</button>
-          </>
-        )}
+        <>
+          <button disabled={!hasNextPage} onClick={() => setPage(page + 1)}>
+            ›
+          </button>
+          <button
+            disabled={page + 9 >= lastPage}
+            onClick={() => setPage(page + 10)}
+          >
+            ››
+          </button>
+          <button disabled={!hasNextPage} onClick={() => setPage(lastPage)}>
+            »
+          </button>
+        </>
       </div>
 
       <div className="pagination-limit">

@@ -10,7 +10,9 @@ import { DEFAULT_COMICS_LIMIT } from "../../constants/filters";
 
 const Comics = () => {
   const { filters, setFilters } = usePageFilters();
-  const { page, limit, title } = filters;
+  const page = Number(filters.page) || 1;
+  const limit = Number(filters.limit) || DEFAULT_COMICS_LIMIT;
+  const title = filters.title;
   const { characterId = "" } = useParams();
 
   const [comics, setComics] = useState([]);
