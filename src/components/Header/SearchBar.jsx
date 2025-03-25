@@ -16,7 +16,8 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newParams = { title: search, page: 1 };
+    const isCharacterPage = location.pathname.startsWith("/characters");
+    const newParams = { [isCharacterPage ? "name" : "title"]: search, page: 1 };
     const searchString = new URLSearchParams(newParams).toString();
     const destination_pathname = location.pathname.startsWith("/characters")
       ? "/characters"
@@ -36,7 +37,11 @@ const SearchBar = () => {
       <input
         type="text"
         className="search-bar"
-        placeholder="Search comics..."
+        placeholder={
+          location.pathname.startsWith("/characters")
+            ? "Search characters..."
+            : "Search comics..."
+        }
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />

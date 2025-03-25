@@ -1,0 +1,29 @@
+.characters-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+}
+
+.characters-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.pagination-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.pagination-left-space {
+  flex: 1;
+  height: 10px;
+}
+
+.pagination-right-space {
+  flex: 2;
+}
