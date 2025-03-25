@@ -105,21 +105,50 @@
   transform: rotateY(360deg);
 }
 
-/* Effet glitch léger */
 @keyframes glitch {
   0% {
-    text-shadow: 2px 2px red, -2px -2px blue;
+    text-shadow: 1px 1px red, -1px -1px blue;
   }
-  20% {
-    text-shadow: 0px 0px white, 1px -1px green;
+  15% {
+    text-shadow: -2px 1px cyan, 1px -2px magenta;
   }
-  40% {
-    text-shadow: 1px -1px blue, -1px 1px red;
+  30% {
+    text-shadow: 2px -1px lime, -1px 1px red;
+  }
+  45% {
+    text-shadow: -1px 2px blue, 1px -1px white;
   }
   60% {
-    text-shadow: 0px 0px white, 2px 2px magenta;
+    text-shadow: 1px 1px magenta, -1px -1px cyan;
+  }
+  75% {
+    text-shadow: 0 0 2px red;
   }
   100% {
-    text-shadow: 2px 2px red, -2px -2px blue;
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-1px, 2px);
+  }
+  20% {
+    transform: translate(2px, -1px);
+  }
+  30% {
+    transform: translate(-1px, 1px);
+  }
+  40% {
+    transform: translate(1px, -2px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }

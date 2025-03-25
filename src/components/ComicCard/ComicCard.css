@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: relative;
 }
 
 .comic-card:hover {
@@ -38,4 +39,48 @@
   display: block;
   line-height: 1.2;
   word-break: break-word;
+}
+
+.comic-bubble {
+  position: absolute;
+  /* top: -10px; */
+  left: 10%;
+  width: 70%;
+  height: 100px;
+
+  background-image: url("/comic-bubble.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 3.5rem;
+  opacity: 0;
+  z-index: 10;
+}
+
+.comic-bubble-text {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  line-height: 1.2;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  max-width: 40%;
+  max-height: 80%;
+  position: absolute;
+  top: 25px;
+}
+
+.comic-card:hover .comic-bubble {
+  opacity: 1;
 }

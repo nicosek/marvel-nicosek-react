@@ -6,7 +6,7 @@ const ComicCard = ({ comic }) => {
   const { setFilters } = usePageFilters();
 
   const handleClick = () => {
-    setFilters({ title: "" }); // 👈 reset de la search
+    setFilters({ title: "" });
   };
 
   return (
@@ -16,6 +16,12 @@ const ComicCard = ({ comic }) => {
       onClick={handleClick}
     >
       <div className="comic-card">
+        {comic.description && (
+          <div className="comic-bubble">
+            <p className="comic-bubble-text">{comic.description}</p>
+          </div>
+        )}
+
         <img
           src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
           alt={comic.title}
