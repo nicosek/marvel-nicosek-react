@@ -1,20 +1,9 @@
-import usePageFilters from "../../hooks/usePageFilters";
 import { Link } from "react-router-dom";
 import "./ComicCard.css";
 
 const ComicCard = ({ comic }) => {
-  const { setFilters } = usePageFilters();
-
-  const handleClick = () => {
-    setFilters({ title: "" });
-  };
-
   return (
-    <Link
-      to={`/comic/${comic._id}`}
-      className="comic-card-link"
-      onClick={handleClick}
-    >
+    <Link to={`/comic/${comic._id}`} className="comic-card-link">
       <div className="comic-card">
         {comic.description && (
           <div className="comic-bubble">

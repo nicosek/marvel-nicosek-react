@@ -1,5 +1,8 @@
 .gallery-section {
-  /* margin-top: 3rem; */
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .gallery-title {
@@ -55,4 +58,26 @@
 
 .comics-carousel::-webkit-scrollbar {
   display: none;
+}
+
+/* Variante compacte, utilisée dans CharacterShow */
+
+.gallery-section.compact .carousel-wrapper {
+  max-width: 40vw;
+}
+
+.gallery-section.compact .gallery-title {
+  text-align: left;
+  margin-left: 0;
+  font-size: 1.8rem;
+}
+
+.character-right .gallery-section.compact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gallery-section.compact .gallery-title {
+  text-align: center;
+  margin: 0 auto 2rem;
 }

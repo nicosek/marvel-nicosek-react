@@ -9,14 +9,12 @@ const SearchBar = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const isResultsPage =
-    location.pathname.startsWith("/comics") ||
-    location.pathname.startsWith("/characters");
+  const isCharacterPage = location.pathname.startsWith("/characters");
+  const isComicPage = location.pathname.startsWith("/comics");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isCharacterPage = location.pathname.startsWith("/characters");
     const newParams = { [isCharacterPage ? "name" : "title"]: search, page: 1 };
     const searchString = new URLSearchParams(newParams).toString();
     const destination_pathname = location.pathname.startsWith("/characters")
@@ -27,10 +25,10 @@ const SearchBar = () => {
   };
 
   useEffect(() => {
-    if (isResultsPage) {
+    if (isComicPage || isCharacterPage) {
       setSearch(filters.title || "");
     }
-  }, [filters.title, isResultsPage]);
+  }, [filters.title, isCharacterPage, isComicPage]);
 
   return (
     <form onSubmit={handleSubmit} className="search-form">

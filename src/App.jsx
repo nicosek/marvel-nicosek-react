@@ -16,6 +16,7 @@ import Home from "./pages/Home/Home";
 import Comics from "./pages/Comics/Comics";
 import Comic from "./pages/Comic/Comic";
 import Characters from "./pages/Characters/Characters";
+import Character from "./pages/Character/Character";
 
 const App = () => {
   return (
@@ -31,7 +32,7 @@ const App = () => {
               <Route path="/comics/:characterId" element={<Comics />} />
               <Route path="/comic/:id" element={<Comic />} />
               <Route path="/characters" element={<Characters />} />
-              {/* <Route path="/character/:id" element={<Character />} /> */}
+              <Route path="/character/:id" element={<Character />} />
             </Route>
           </Routes>
         </Router>

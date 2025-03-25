@@ -19,16 +19,16 @@ const Comics = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const isPageMissing = page === undefined;
-    const isLimitMissing = limit === undefined;
+    const isPageMissing = filters.page === undefined;
+    const isLimitMissing = filters.limit === undefined;
 
     if (isPageMissing || isLimitMissing) {
       setFilters({
-        page: page || 1,
-        limit: limit || DEFAULT_COMICS_LIMIT,
+        page: filters.page || 1,
+        limit: filters.limit || DEFAULT_COMICS_LIMIT,
       });
     }
-  });
+  }, []);
 
   const loadComicsData = async (params) => {
     try {

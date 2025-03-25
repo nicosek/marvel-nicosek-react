@@ -26,7 +26,7 @@ const Characters = () => {
         limit: filters.limit || DEFAULT_COMICS_LIMIT,
       });
     }
-  }, []);
+  });
 
   const loadCharactersData = async (params) => {
     try {
