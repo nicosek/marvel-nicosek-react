@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Loader from "../../components/Loader/Loader"; // ou le bon chemin
+import Loader from "../../components/Loader/Loader";
 import "./ComicCard.css";
 
 const ComicCard = ({ comic }) => {
@@ -13,6 +13,12 @@ const ComicCard = ({ comic }) => {
         {!imgLoaded && (
           <div className="comic-card-loader">
             <Loader />
+          </div>
+        )}
+
+        {comic.description && (
+          <div className="comic-bubble">
+            <p className="comic-bubble-text">{comic.description}</p>
           </div>
         )}
 
