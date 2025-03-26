@@ -3,7 +3,7 @@
   top: 0; /* 👈 collé en haut */
   z-index: 10; /* 👈 s’assurer qu’il passe devant le contenu */
 
-  height: 100px;
+  height: var(--header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,7 +11,7 @@
   margin-bottom: 30px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 1);
 
-  background-image: url("/background-header.webp");
+  background-image: url("/background-header2.jpg");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -27,6 +27,7 @@
   background-color: rgba(255, 255, 255, 0.3); /* 👈 opacité réglable */
   z-index: 0;
   pointer-events: none;
+  height: var(--header-height);
 }
 
 /* S’assurer que le contenu du header reste au-dessus du voile */

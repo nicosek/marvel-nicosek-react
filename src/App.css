@@ -12,7 +12,11 @@
   --primary-color-transparent: rgba(230, 36, 41, 0.6);
   --secondary-color: #02287b;
   --secondary-color-transparent: rgba(2, 40, 123, 0.8);
+
   --font-family: "Marvel", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  --header-height: 100px;
+  --toolbar-height: 130px;
 }
 
 body {

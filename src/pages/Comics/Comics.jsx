@@ -7,6 +7,7 @@ import ComicCard from "../../components/ComicCard/ComicCard";
 import ComicsToolbar from "../../components/ComicsToolbar/ComicsToolbar";
 import "./Comics.css";
 import { DEFAULT_COMICS_LIMIT } from "../../constants/filters";
+import Loader from "../../components/Loader/Loader";
 
 const Comics = () => {
   const { filters, setFilters } = usePageFilters();
@@ -17,6 +18,7 @@ const Comics = () => {
 
   const [comics, setComics] = useState([]);
   const [count, setCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const isPageMissing = filters.page === undefined;
@@ -38,6 +40,8 @@ const Comics = () => {
       setCount(count);
     } catch (e) {
       console.error("Error loading comics (filters):", e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -62,7 +66,13 @@ const Comics = () => {
         <ComicsToolbar totalCount={count} />
       </div>
 
-      <ItemGrid items={comics} RenderItem={ComicCard} propName="comic" />
+      {isLoading ? (
+        <div className="comics-loader-wrapper">
+          <Loader />
+        </div>
+      ) : (
+        <ItemGrid items={comics} RenderItem={ComicCard} propName="comic" />
+      )}
     </main>
   );
 };

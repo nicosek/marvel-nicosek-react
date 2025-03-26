@@ -27,3 +27,8 @@
 .pagination-right-space {
   flex: 2;
 }
+
+.characters-loader-wrapper {
+  height: 50dvh;
+  width: 100%;
+}

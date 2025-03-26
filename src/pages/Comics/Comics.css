@@ -10,3 +10,8 @@
   font-weight: 800;
   text-transform: uppercase;
 }
+
+.comics-loader-wrapper {
+  height: 50dvh;
+  width: 100%;
+}

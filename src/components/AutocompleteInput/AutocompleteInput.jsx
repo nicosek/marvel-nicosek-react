@@ -2,6 +2,7 @@ import "./AutocompleteInput.css";
 import { useState, useEffect } from "react";
 import { useSuggestions } from "../../hooks/useSuggestions";
 import { useLocation, useParams } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const AutocompleteInput = ({
   placeholder = "Search comics by hero name",
@@ -46,21 +47,27 @@ const AutocompleteInput = ({
         onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
       />
 
-      {showSuggestions && results.length > 0 && (
+      {showSuggestions && query.length > 0 && (
         <ul className="autocomplete-suggestions">
-          {results.map((item) => (
-            <li
-              key={item[keyField]}
-              className="autocomplete-item"
-              onClick={() => handleSelect(item)}
-            >
-              {item[displayField]}
+          {loading ? (
+            <li className="autocomplete-loader-wrapper">
+              <Loader />
             </li>
-          ))}
+          ) : results.length > 0 ? (
+            results.map((item) => (
+              <li
+                key={item[keyField]}
+                className="autocomplete-item"
+                onClick={() => handleSelect(item)}
+              >
+                {item[displayField]}
+              </li>
+            ))
+          ) : (
+            <li className="autocomplete-empty">No results found.</li>
+          )}
         </ul>
       )}
-
-      {loading && <div className="autocomplete-loading">Loading...</div>}
     </div>
   );
 };

@@ -1,0 +1,108 @@
+.comic-show-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.comic-show-container {
+  max-width: 700px;
+  width: 100%;
+  background-color: var(--secondary-color);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.comic-show-title {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-color);
+
+  /* 👇 Apparition initiale */
+  animation: fadeInBig 1s ease-out forwards;
+
+  /* 👇 Ensuite, scintillement en boucle */
+  animation-delay: 0s, 1s;
+  animation-name: fadeInBig, softGlow;
+  animation-duration: 1.6s, 0.8s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1, infinite;
+}
+
+@keyframes fadeInBig {
+  0% {
+    opacity: 0;
+    transform: scale(0.25) translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes softGlow {
+  0% {
+    text-shadow: 0 0 4px red;
+    color: var(--primary-color);
+  }
+  25% {
+    text-shadow: 0 0 6px orange;
+    color: #ff4444;
+  }
+  50% {
+    text-shadow: 0 0 8px yellow;
+    color: #ff6666;
+  }
+  75% {
+    text-shadow: 0 0 6px orange;
+    color: #ff4444;
+  }
+  100% {
+    text-shadow: 0 0 4px red;
+    color: var(--primary-color);
+  }
+}
+
+.comic-show-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.comic-show-image {
+  width: 220px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+  transition: transform 0.4s ease;
+  flex-shrink: 0;
+}
+
+.comic-show-description {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: white;
+  max-width: 600px;
+}
+
+.comic-show-loading,
+.comic-show-error {
+  text-align: center;
+  padding: 3rem;
+  color: var(--primary-color);
+}

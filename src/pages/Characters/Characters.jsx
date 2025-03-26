@@ -6,6 +6,7 @@ import CharacterCard from "../../components/CharacterCard/CharacterCard";
 import Pagination from "../../components/Pagination/Pagination";
 import "./Characters.css";
 import { DEFAULT_COMICS_LIMIT } from "../../constants/filters";
+import Loader from "../../components/Loader/Loader";
 
 const Characters = () => {
   const { filters, setFilters } = usePageFilters();
@@ -15,6 +16,7 @@ const Characters = () => {
 
   const [characters, setCharacters] = useState([]);
   const [count, setCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const isPageMissing = filters.page === undefined;
@@ -36,6 +38,8 @@ const Characters = () => {
       setCount(count);
     } catch (e) {
       console.error("Error loading characters:", e);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,11 +59,17 @@ const Characters = () => {
         </div>
       </div>
 
-      <ItemGrid
-        items={characters}
-        RenderItem={CharacterCard}
-        propName="character"
-      />
+      {isLoading ? (
+        <div className="characters-loader-wrapper">
+          <Loader />
+        </div>
+      ) : (
+        <ItemGrid
+          items={characters}
+          RenderItem={CharacterCard}
+          propName="character"
+        />
+      )}
     </main>
   );
 };
