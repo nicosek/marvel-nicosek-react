@@ -16,6 +16,7 @@ const Pagination = ({ totalCount }) => {
   const setPage = (p) => {
     const safePage = Math.max(1, Math.min(lastPage, p));
     setFilters({ page: safePage });
+    window.scrollTo({ top: 0 });
   };
 
   const handleLimitChange = (e) => {

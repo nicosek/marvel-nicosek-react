@@ -24,12 +24,12 @@
 
 .comic-card img {
   width: 100%;
-  height: 220px;
+  height: 232px;
   object-fit: cover;
 }
 
 .comic-title {
-  height: 48px; /* Fixe : 2 lignes de texte */
+  height: 48px;
   padding: 0.5rem;
   font-size: 0.95rem;
   font-weight: 600;
@@ -38,6 +38,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-transform: uppercase;
   letter-spacing: 0.4px;
+  margin-bottom: 0px;
 
   /* 🔒 Troncature manuelle à 2 lignes */
   overflow: hidden;
@@ -88,4 +89,8 @@
 
 .comic-card:hover .comic-bubble {
   opacity: 1;
+}
+
+.comic-card-loader {
+  height: 100%;
 }

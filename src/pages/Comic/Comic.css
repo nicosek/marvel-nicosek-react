@@ -129,7 +129,5 @@
   flex: 1;
   padding-left: 2rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 300px;
 }

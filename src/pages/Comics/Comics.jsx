@@ -48,6 +48,7 @@ const Comics = () => {
   // 🔁 Changement de filtre (hors character)
   useEffect(() => {
     if (!characterId) {
+      setIsLoading(true);
       loadComicsData({ page, limit, title });
     }
   }, [page, limit, title]);
@@ -55,6 +56,7 @@ const Comics = () => {
   // 🔁 Changement de character
   useEffect(() => {
     if (characterId) {
+      setIsLoading(true);
       loadComicsData({ characterId });
     }
   }, [characterId]);

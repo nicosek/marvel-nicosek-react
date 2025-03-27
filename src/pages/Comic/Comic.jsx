@@ -10,8 +10,8 @@ const Comic = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [imgLoaded, setImgLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const title = comic?.title || "";
-  const description = comic?.description || "";
+  const title = comic?.title;
+  const description = comic?.description;
   const thumbnail = comic?.thumbnail;
   const imageUrl = thumbnail
     ? `${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`
@@ -47,7 +47,7 @@ const Comic = () => {
     <main className="comic-show-page">
       <div className="comic-show-container">
         {/* Titre affiché uniquement quand le comic est chargé */}
-        {comic && <h1 className="comic-show-title">{title}</h1>}
+        <h1 className="comic-show-title">{title || "Loading..."}</h1>
 
         <div className="comic-show-summary">
           {/* Image avec loader */}

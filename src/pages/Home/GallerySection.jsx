@@ -6,7 +6,7 @@ const GallerySection = ({
   comics = [],
   title = "Discover Comics",
   className,
-  isLoading = false, // 👈 nouvelle prop
+  isLoading = false,
 }) => {
   return (
     <section className={`gallery-section ${className || ""}`}>

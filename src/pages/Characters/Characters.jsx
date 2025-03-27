@@ -44,6 +44,7 @@ const Characters = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     loadCharactersData({ page, limit, name });
   }, [page, limit, name]);
 
