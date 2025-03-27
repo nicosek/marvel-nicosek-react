@@ -4,18 +4,26 @@ import "./AuthButtons.css";
 
 const AuthButtons = () => {
   const { openLoginModal, openSignupModal } = useModal();
-  const { token, handleLogout } = useAuth();
+  const { token, userEmail, handleLogout } = useAuth();
+
+  const getUsername = () => {
+    if (!userEmail) return "Logged In";
+    return userEmail.split("@")[0];
+  };
 
   return (
     <div className="auth-buttons">
       {token ? (
-        <button
-          type="button"
-          className="auth-btn logout"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
+        <>
+          <span className="auth-username">🦸 {getUsername()}</span>
+          <button
+            type="button"
+            className="auth-btn logout"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        </>
       ) : (
         <>
           <button

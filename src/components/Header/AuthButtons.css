@@ -34,3 +34,18 @@
   background-color: white;
   color: var(--secondary-color);
 }
+
+.auth-username {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-right: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 50%;
+}

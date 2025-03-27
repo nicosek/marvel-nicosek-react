@@ -21,7 +21,7 @@ const LoginModal = () => {
       const data = await login({ email, password });
 
       if (data.token) {
-        handleLogin(data.token);
+        handleLogin(data.token, email);
         handleClose();
       } else {
         setError("Aucun token reçu.");

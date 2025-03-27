@@ -22,7 +22,7 @@ const SignupModal = () => {
       const data = await signup({ email, password });
 
       if (data.token) {
-        handleLogin(data.token);
+        handleLogin(data.token, email);
         handleClose();
       } else {
         setError("Aucun token reçu.");

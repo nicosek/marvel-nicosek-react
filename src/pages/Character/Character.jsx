@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import api from "../../api/client";
 import GallerySection from "../Home/GallerySection";
 import Loader from "../../components/Loader/Loader";
+import { fetchComics } from "../../api/comics";
 import "./Character.css";
 
 const Character = () => {
@@ -28,21 +29,16 @@ const Character = () => {
   useEffect(() => {
     const fetchCharacterComics = async () => {
       try {
-        const ids = character?.comics || [];
-        if (!ids.length) return;
-
-        const promises = ids.map((id) =>
-          api.get(`/api/marvel/comic/${id}`).then((res) => res.data)
-        );
-
-        const results = await Promise.all(promises);
-        setCharacterComics(results);
+        const { comics } = await fetchComics({ characterId: character._id });
+        setCharacterComics(comics);
       } catch (err) {
         console.error("Error fetching character's comics:", err);
       }
     };
 
-    if (character) fetchCharacterComics();
+    if (character?._id) {
+      fetchCharacterComics();
+    }
   }, [character]);
 
   const bgImage =

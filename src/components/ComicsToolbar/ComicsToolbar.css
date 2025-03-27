@@ -28,7 +28,7 @@
 .sticky-pagination {
   position: sticky;
   top: 103px;
-  z-index: 2;
+  z-index: 3;
   backdrop-filter: blur(20px);
   box-shadow: 0 4px 19px rgba(0, 0, 0, 0.8);
   background-color: var(--secondary-color-transparent);
