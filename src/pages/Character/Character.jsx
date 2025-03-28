@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import api from "../../api/client";
 import GallerySection from "../Home/GallerySection";
 import Loader from "../../components/Loader/Loader";
 import { fetchComics } from "../../api/comics";
+import FavoriteBanner from "../../components/FavoriteBanner/FavoriteBanner";
 import "./Character.css";
 
 const Character = () => {
@@ -11,6 +13,7 @@ const Character = () => {
   const [character, setCharacter] = useState(null);
   const [characterComics, setCharacterComics] = useState([]);
   const [imgLoaded, setImgLoaded] = useState(false);
+  const { token } = useAuth();
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -76,6 +79,12 @@ const Character = () => {
                 {character.description ||
                   `Mysterious and powerful, ${character.name} remains an enigma in the Marvel Universe.`}
               </p>
+              {token && (
+                <FavoriteBanner
+                  resourceId={character._id}
+                  resourceType="character"
+                />
+              )}
             </>
           )}
 

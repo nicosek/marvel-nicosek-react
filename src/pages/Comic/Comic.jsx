@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import api from "../../api/client";
 import Loader from "../../components/Loader/Loader";
+import FavoriteBanner from "../../components/FavoriteBanner/FavoriteBanner";
 import "./Comic.css";
 
 const Comic = () => {
@@ -16,6 +18,7 @@ const Comic = () => {
   const imageUrl = thumbnail
     ? `${thumbnail.path}/portrait_uncanny.${thumbnail.extension}`
     : "";
+  const { token } = useAuth();
 
   useEffect(() => {
     const fetchComic = async () => {
@@ -48,6 +51,10 @@ const Comic = () => {
       <div className="comic-show-container">
         {/* Titre affiché uniquement quand le comic est chargé */}
         <h1 className="comic-show-title">{title || "Loading..."}</h1>
+
+        {token && comic && (
+          <FavoriteBanner resourceId={comic._id} resourceType="comic" />
+        )}
 
         <div className="comic-show-summary">
           {/* Image avec loader */}
