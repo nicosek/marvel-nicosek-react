@@ -66,6 +66,12 @@ const Character = () => {
               style={{ display: imgLoaded ? "block" : "none" }}
             />
           )}
+          {token && character && (
+            <FavoriteBanner
+              resourceId={character._id}
+              resourceType="character"
+            />
+          )}
           {!imgLoaded && <Loader />}
         </div>
 
@@ -79,12 +85,6 @@ const Character = () => {
                 {character.description ||
                   `Mysterious and powerful, ${character.name} remains an enigma in the Marvel Universe.`}
               </p>
-              {token && (
-                <FavoriteBanner
-                  resourceId={character._id}
-                  resourceType="character"
-                />
-              )}
             </>
           )}
 

@@ -5,14 +5,14 @@ import { useAuth } from "../../contexts/AuthContext";
 import FavoriteToggle from "../FavoriteToggle/FavoriteToggle";
 import "./ComicCard.css";
 
-const ComicCard = ({ comic }) => {
+const ComicCard = ({ comic, className = "" }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
   const imageUrl = `${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`;
   const { token } = useAuth();
 
   return (
     <Link to={`/comic/${comic._id}`} className="comic-card-link">
-      <div className="comic-card">
+      <div className={`comic-card ${className || ""}`}>
         {token && (
           <FavoriteToggle resourceId={comic._id} resourceType="comic" />
         )}

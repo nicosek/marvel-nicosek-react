@@ -20,7 +20,7 @@ const GallerySection = ({
         <div className="carousel-wrapper">
           <div className="comics-carousel">
             {comics.map((comic) => (
-              <ComicCard key={comic._id} comic={comic} />
+              <ComicCard key={comic._id} comic={comic} className={className} />
             ))}
           </div>
         </div>

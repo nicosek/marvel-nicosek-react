@@ -4,7 +4,7 @@
   perspective: 1000px;
   cursor: pointer;
   position: relative;
-  /* display: block; */
+  display: inline-block;
 }
 
 .card-face {

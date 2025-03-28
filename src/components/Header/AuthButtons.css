@@ -35,17 +35,16 @@
   color: var(--secondary-color);
 }
 
-.auth-username {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin-right: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-transform: capitalize;
-  letter-spacing: 0.5px;
-  background-color: var(--secondary-color);
-  padding: 10px;
-  border-radius: 50%;
+.auth-btn.favorites {
+  background-color: gold;
+  color: var(--secondary-color);
+  font-weight: 700;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.auth-btn.favorites:hover {
+  box-shadow: 0 0 12px 4px gold;
 }
